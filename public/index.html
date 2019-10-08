@@ -1,0 +1,227 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="theme-color" content="#1a237e">
+<!--Import Google Icon Font--> <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Compiled and minified CSS -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!-- Compiled and minified JavaScript --> <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.min.js"></script>
+
+<link rel="manifest" href="/manifest.json">
+<!-- ios support --> <link rel="apple-touch-icon" href="/img/icons/icon-96x96.png"> <meta name="apple-mobile-web-app-status-bar" content="#1a237e">
+<title>Jatha Ventas</title>
+</head>
+
+<style>
+
+    .tabs .tab a:focus, .tabs .tab a:focus.active {
+        background: transparent;
+    }
+
+    .tabs .indicator { 
+        background-color: #1a237e; 
+    }
+
+</style>
+
+<body>
+    <nav class="nav-wrapper indigo darken-4">
+        <div class="container">
+            <a href="/" class="brand-logo"><h5>JATHA VENTAS</h5></a>
+            <a href="#" class="sidenav-trigger" data-target="mobile-links">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li><a class="center user-label"></a></li>
+                <li><a href="/" class="logged-in">Overview</a></li>
+                <li><a href="#addSale" class="modal-trigger logged-in">Add Product</a></li>
+                <li><a href="/pages/producttracker.html" class="logged-in">Product tracker</a></li>
+                <li><a class="month-text logged-in"></a></li>
+                <li><a href="#logIn" class="modal-trigger logged-out">Login</a></li>
+                <li><a href="#logOut" class="modal-trigger logged-in">Logout</a></li>
+                <li><a href="#signUp" class="modal-trigger logged-out">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+        
+    <ul class="sidenav" id="mobile-links">
+        <li><a class="center user-label"></a></li>
+        <li><a href="/" class="logged-in">Overview</a></li>
+        <li><a href="#addSale" class="modal-trigger logged-in">Add Product</a></li>
+        <li><a href="/pages/producttracker.html" class="logged-in">Product tracker</a></li>
+        <li><a class="month-text logged-in"></a></li>
+        <li><a href="#logIn" class="modal-trigger logged-out">Login</a></li>
+        <li><a href="#logOut" class="modal-trigger logged-in">Logout</a></li>
+        <li><a href="#signUp" class="modal-trigger logged-out">Sign Up</a></li>
+    </ul>
+
+    <!--ADD PRODUCT MODAL-->
+    <div class="container">
+        <div class="modal" id="addSale">
+            <div class="modal-content">
+                <h4 class="center indigo-text text-darken-4">Add A Product</h4>
+                <form action="" class="addSaleForm">
+                    <div class="input-field">
+                        <i class="material-icons prefix">emoji_objects</i>
+                        <label for="soldProduct">Sold product</label>
+                        <input type="text" id="soldProduct">
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix">format_list_numbered_rtl</i>
+                        <label for="productId">Product serial number</label>
+                        <input type="text" id="productId">
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix">equalizer</i>
+                        <label for="productValue">product value (in $)</label>
+                        <input type="text" id="productValue">
+                    </div>
+                    <div class="input-field center">
+                        <button class="btn indigo darken-4 modal-close">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--SIGNUP MODAL-->
+    <div class="container">
+        <div class="modal" id="signUp">
+            <div class="modal-content">
+                <h4 class="center indigo-text text-darken-4">Sign Up</h4>
+                <form action="" class="signUpForm">
+                    <div class="input-field">
+                        <i class="material-icons prefix">email</i>
+                        <label for="signup-email">Your Email</label>
+                        <input type="email" id="signup-email">
+                        <p class="center">Email must be a valid address, e.g. me@mydomain.com</p>
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix">lock</i>
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password">
+                        <p>Password must be alphanumeric</p>
+                        <p>@, _ and - are allowed</p>
+                        <p>Password must be between 5 - 10 characters</p>
+                    </div>
+                    <div class="input-field center">
+                        <button class="btn indigo darken-4 signup-close">Submit</button>
+                    </div>
+                    <a href="#logIn" class="center indigo-text text-darken-4 refer" style="text-decoration: underline">Click here to login instead</a>
+                    <h7 class="center signup-error-message"></h7>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--LOGIN MODAL-->
+    <div class="container">
+        <div class="modal" id="logIn">
+            <div class="modal-content">
+                <h4 class="center indigo-text text-darken-4">Login</h4>
+                <form action="" class="logInForm">
+                    <div class="input-field">
+                        <i class="material-icons prefix">email</i>
+                        <label for="login-email">Your Email</label>
+                        <input type="email" id="login-email">
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix">lock</i>
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password">
+                    </div>
+                    <div class="input-field center">
+                        <button class="btn indigo darken-4">Submit</button>
+                    </div>
+                    <h7 class="center signin-error-message"></h7>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--LOGOUT MODAL-->
+    <div class="container">
+        <div class="modal" id="logOut">
+            <div class="modal-content">
+                <h5>Are you sure you want to log out?</h5>
+                <div class="btn-large indigo darken-4 left logout modal-close" style="margin-bottom: 5%; margin-top: 2.5%">YES</div>
+                <div class="btn-large indigo darken-4 right modal-close" style="margin-bottom: 5%; margin-top: 2.5%">NO</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s12 tabs-section">
+        <ul class="tabs tabs-fixed-width">
+            <li class="tab col s12 l6">
+                <a href="#today"><h6 class="center indigo-text text-darken-4">Today</h6></a>
+            </li>
+            <li class="tab col s12 l6">
+                <a href="#month"><h6 class="center indigo-text text-darken-4">This Month</h6></a>
+            </li>
+        </ul>
+        <div class="container">
+            <div class="col s12 l6" id="today">
+                <div class="soldToday" style="margin-top: 2%;"></div>
+            </div>
+            <div class="col s12 l6" id="month">
+                <div class="soldThisMonth" style="margin-top: 2%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" class="search" style="visibility: hidden;">
+            <div class="card">
+                <div class="card-title">
+                    <h5 class="center indigo-text text-darken-4">Search a product here</h5>
+                    <form action="" class="search-form">
+                        <div class="input-field center">
+                            <i class="material-icons prefix">search</i>
+                            <label for="search">Type in product serial number</label>
+                            <input type="text" id="search">
+                            <div class="center search-error"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+    <div class="container search-output"></div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-auth.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-analytics.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyBaX2ZV0mNMGBxl3yHpUaoG20A3r58Av00",
+        authDomain: "jatha-ventas.firebaseapp.com",
+        databaseURL: "https://jatha-ventas.firebaseio.com",
+        projectId: "jatha-ventas",
+        storageBucket: "",
+        messagingSenderId: "500599173815",
+        appId: "1:500599173815:web:dd7d8af27fbac2fb751332",
+        measurementId: "G-SYQRXDHR6P"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+    </script>
+
+    <script type="text/javascript" src="/scripts/materialize.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/ui.js"></script>
+    <script type="text/javascript" src="/scripts/db.js"></script>
+    <script type="text/javascript" src="/scripts/auth.js"></script>
+</body>
+</html>
