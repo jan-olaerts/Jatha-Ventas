@@ -1,5 +1,5 @@
 # Sell app
-Sell app is an application made for vendors to keep track of what they have sold in the month, built with Vanilla JavaScript. The goal of this application was to practice the basic concpets of JavaScript.
+Sell app is an application made for vendors to keep track of what they have sold in the month, built with Vanilla JavaScript. The goal of this application was to practice the main concepts of JavaScript.
 
 ## Installation
 Use npm install to install all the dependencies
